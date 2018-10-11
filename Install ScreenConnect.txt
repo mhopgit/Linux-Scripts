@@ -1,0 +1,21 @@
+1)  Install WinSCP on a Windows machine with access to the Ubuntu server.
+    This program will be used to copy necessary files back and forth to the Ubuntu server.
+
+    File Protocol: SFTP
+    Host: IP Address of Ubuntu server
+    Port: 22
+    User
+    Password
+
+2)  In ScreenConnect, build an installer for the company
+
+    Name: Use Machine Name
+    Organization: Company Name
+    Type: Debian Linux (.deb)
+
+3)  Use WinSCP to copy the file to the Ubuntu server
+4)  From Ubuntu execute the following commands. Java Runtime Environment is a prerequisuite for 
+    ScreenConnect on Ubuntu so this must be installed.
+
+    sudo apt install default-jre
+    sudo dpkg -i ConnectWiseControl.ClientSetup.deb

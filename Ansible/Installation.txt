@@ -1,0 +1,49 @@
+https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
+
+1)  Install Ubuntu 18.04
+2)  Install WinSCP on a Windows machine with access to the Ubuntu server.
+    This program will be used to copy necessary files back and forth to the Ubuntu server.
+
+    File Protocol: SFTP
+    Host: IP Address of Ubuntu server
+    Port: 22
+    User
+    Password
+
+3)  Install ansible
+    sudo apt-get update
+    sudo apt-get install software-properties-common
+    sudo apt-add-repository --yes --update ppa:ansible/ansible
+    sudo apt-add-repository --yes universe
+    sudo apt-get update && sudo apt install ansible
+    sudo apt update
+    sudo apt install python
+    sudo apt install python-dev libkrb5-dev krb5-user
+    sudo apt install python-pip
+    pip install pywinrm[kerberos]
+
+4)  Modify Kerberos settings
+    https://docs.ansible.com/ansible/latest/user_guide/windows_winrm.html#authentication-options
+
+    Modify the Kerberos Config File
+    sudo nano /etc/krb5.conf
+
+    Modify the Ansible Hosts File to indicate a user account and authentication method
+
+    sudo nano /etc/ansible/hosts/
+    ansible_user: username@MY.DOMAIN.COM
+    ansible_password: Password
+    ansible_connection: winrm
+    ansible_winrm_transport: kerberos
+    ansible_winrm_server_cert_validation=ignore	
+
+5)  Edit Ubuntu Server DNS to point to DNS provider on the domain
+
+    sudo nano /etc/resolv.conf
+
+    nameserver ipaddress
+
+6)  Test Kerberos 
+
+    kinit -C username@MY.DOMAIN.COM
+    klist
