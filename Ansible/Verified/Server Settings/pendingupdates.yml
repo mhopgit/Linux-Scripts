@@ -1,23 +1,29 @@
 #Get a list of available Windows Updates
 
+
 - hosts: test
+
   tasks:
+
 
     - name: Search-only, return list of found updates (if any), log to C:\ansible_wu.txt
 
+
       win_updates:
 
+
         category_names: 
-    
+
         - SecurityUpdates
         - Updates
         - CriticalUpdates
         - UpdateRollups
 
         state: searched
-        
+
         log_path: C:\ansible_wu.txt
+
       register: available_updates
 
-    - debug:
+    - debug: 
         var: available_updates
