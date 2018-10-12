@@ -1,0 +1,8 @@
+- hosts: test
+  tasks:
+
+    - name: Set timezone to 'Eastern Standard Time' 
+
+      win_timezone:
+
+        timezone: Eastern Standard Time

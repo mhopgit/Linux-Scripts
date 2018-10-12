@@ -1,0 +1,19 @@
+#Get a list of available Windows Updates
+
+- hosts: test
+  tasks:
+
+    - name: Install Windows Updates and log to C:\ansible_updates.txt. Reboot when necessary.
+
+      win_updates:
+
+        category_names: 
+    
+        - SecurityUpdates
+        - Updates
+        - CriticalUpdates
+        - UpdateRollups
+
+        log_path: C:\ansible_updates.txt
+        
+        reboot: yes
