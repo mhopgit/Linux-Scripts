@@ -1,0 +1,25 @@
+- hosts: test
+
+  tasks:
+
+
+    - name: Install Remote Desktop Connection Manager from a network share specifying the credentials
+
+      win_package:
+
+        path: \\server\Packages\rdcman.msi
+
+        product_id: '{0240359E-6A4C-4884-9E94-B397A02D893C}'
+
+        state: present
+
+        user_name: domain\user
+
+        user_password: password
+
+      register: package_install
+
+
+    - debug: 
+
+        var: package_install
