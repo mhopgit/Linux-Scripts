@@ -1,0 +1,13 @@
+
+- hosts: test
+  tasks:
+    - name: run win_shell and change time zone
+      win_shell: |
+
+        Set-TimeZone -Name "Central Standard Time"
+
+      register: powershell
+
+    - debug: 
+
+        var: powershell
